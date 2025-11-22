@@ -75,7 +75,7 @@ WARNING: IF YOU SEE AMBER/ORANGE= NEEDS FIXING!!!
 Trunk Ports: switch to switch:
 TAAS/BABA:
 config t
-Int Range fa0/10-32
+Int Range fa0/10-12
  shutdown
  no shutdown
  switchport trunk Encap Dot1Q
@@ -87,7 +87,7 @@ CCNPSkillsNow: Etherchannel with LinkAggregationControlProtocol:
 WARNING: THREE CABLES IS BETTER THAN ONE!
 @taas/BABA:
 config t
-Int Range fa0/10-32
+Int Range fa0/10-12
  channel-group 1 mode active
  channel-protocol Lacp
  do sh etherchannel summary
@@ -172,10 +172,10 @@ config t
 ip routing
 ip dhcp pool CAMERA6
 host 10.32.50.6 255.255.255.0
-client-identifier abcd.3234.cafb
+client-identifier abcd.1234.cafb
 ip dhcp pool CAMERA8
 host 10.32.50.8 255.255.255.0
-client-identifier abcd.3234.cafb
+client-identifier abcd.1234.cafb
 end
 show ip dhcp binding
 
@@ -288,9 +288,9 @@ configure terminal
  destination-pattern 11..
  session target ipv4:10.11.100.8
  codec g711ULAW
-  dial-peer voice 32 Voip
-  destination-pattern 32..
-  session target ipv4:10.32.100.8
+  dial-peer voice 12 Voip
+  destination-pattern 12..
+  session target ipv4:10.12.100.8
   codec g711ULAW
 dial-peer voice 21 Voip
  destination-pattern 21..
@@ -488,7 +488,7 @@ application
   paramspace english location flash:
   param second-greeting-time 60
   param max-time-vm-retry 2
-  param voice-mail 3234
+  param voice-mail 1234
   param max-time-call-retry 700
   param aa-pilot 3269
  service rivanqueue flash:app-b-acd-3.0.0.2.tcl
@@ -595,7 +595,7 @@ conf t
   allow-connections h323 to sip    
   allow-connections sip to h323
   allow-connections sip to sip
-  supplementary-service h450.32
+  supplementary-service h450.12
  sip
    bind control source-interface fa0/0
    bind media source-interface fa0/0
@@ -604,8 +604,8 @@ conf t
  voice register global
   mode cme
   source-address 10._.100.8 port 5060
-  max-dn 32
-  max-pool 32
+  max-dn 12
+  max-pool 12
   authenticate register
   create profile sync
  voice register dn 1
@@ -643,4 +643,3 @@ exit
           
 sip-ua
 sip-server ipv4:192.168.k.1
-
