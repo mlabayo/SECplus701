@@ -1,8 +1,10 @@
 Day 2 
-Elastic for logging
+Elastic for log stash
+Wazuh endpoint security
 CSR1000(VMWARE) for showing your edge ip address
 CSR1000(SecureCRT)(individual ip address) for connecting with elastic for system changes
-
+OWASP
+---------------------------------------------------
 ###ElasticSearchV1 VMWARE
 root
 C1sc0123
@@ -68,3 +70,43 @@ config t
 interface gigabitethernet1
 no ip access-group 100 in
 end 
+---------------------------------------------------
+###SecureCRT(208.8.8.133)
+root
+C1sc0123
+###SecureCRT(208.8.8.71)
+admin
+pass
+---------------------------------------------------
+###Wazuh Endpoint Security (Devices) Techniques and Mitigation to fend off attackers
+wazuh.rar>Extract>wazuh.vmx>open
+
+###Wazuh Credentials
+admin
+C1sc0123..
+
+###For editing configuration of wazuh agents(32 bit programs)
+<directories realtime="yes" report_changes="yes" check_all="yes">C:\Users\Administrator\Desktop\jay</directories>
+
+###WazuhV2 VMWare
+root
+C1sc0123
+ip addr(inet ip address)
+
+##WAZUH VMWare (disable firewall)
+sudo systemctl stop firewalld
+##
+208.8.8.37
+
+###wazuh site
+indexer management>Sample data
+
+Deploy new agent>Windows>208.8.8.37>Copy command>windows powershell>Copy command>Win Powershell
+###debug
+files>C>Programfiles 86>ossec-agent>win32ui.exe>view config>line 11(address)>Save>refresh>Start>save>Go to browser
+###editing
+Line 68>32 bit programs>paste>line of code for editing>Save>Stop>Start
+
+###SQL INJECTION
+###_D3PENTESTVM VMWare
+root terminal>type sudo /opt/lampp/lampp start> ip addr (for ip address)>browser>http://ip address/mutillidae/src/index.php
