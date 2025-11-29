@@ -1,0 +1,70 @@
+Day 2 
+Elastic for logging
+CSR1000(VMWARE) for showing your edge ip address
+CSR1000(SecureCRT)(individual ip address) for connecting with elastic for system changes
+
+###ElasticSearchV1 VMWARE
+root
+C1sc0123
+ip addr
+---------------------------------------------------
+###ELASTIC SITE for logging changes made
+htpp://208.8.8.133:5601
+elastic
+C1sc0123
+---------------------------------------------------
+###SECURECRT(208.8.8.133)
+SSH2
+208.8.8.133(Elastic)
+root
+---------------------------------------------------
+###CSR100V VMWARE Configs:
+en
+config t
+int g1
+ip addr dhcp
+no shut
+###Shows the individual dhcp address (208.8.8.71)
+---------------------------------------------------
+###Gui edge router (WEB UI) (208.8.8.71)
+###Ip address from LINUX
+admin
+pass
+---------------------------------------------------
+###SecureCRT SSH2 csr1000(208.8.8.71) 
+###connection csr to elastic:
+en
+config t
+logging host 208.8.8.133 transport udp port 9001
+logging trap informational
+---------------------------------------------------
+###SecureCRT(208.8.8.71)
+###Notify elk for system changes
+en 
+config t
+archive
+log config
+logging enable
+notify syslog
+---------------------------------------------------
+###SecureCRT(208.8.8.71)
+###ELK logging when disconnect or reconnect
+config t
+login on-failure log
+login on-success log
+---------------------------------------------------
+###SecureCRT(208.8.8.71)
+###Access list deny
+config t
+access-list 100 deny ip any host 208.8.8.71 log
+access-list 100 permit any any 
+interface gigabitethernet1
+ip access-group 100 in
+---------------------------------------------------
+###SecureCRT(208.8.8.71)
+###Access list approve
+en
+config t
+interface gigabitethernet1
+no ip access-group 100 in
+end 
