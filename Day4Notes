@@ -1,0 +1,96 @@
+w2022.vmx
+
+task 1: CYBERSECURITY: DATA RESILIENCY
+What is cloud storage? 
+Someone else's on-premises.
+
+task 2: NAS VS SAN 
+Network Attached Storage 
+Storage Area Networks
+
+Server Manager > Add Roles > Files
+Task 3: HOW TO CREATE A ENTERPRISE LEVEL network infrastructure
+step1: IAM: identity and access management 
+        azure,aws,google,okta
+step2: X.500Certificate Authority
+
+servermanager > add roles > ADCS > Configure
+
+Task 4: HOW TO IMPLEMENT A SECURE non-ransomware.
+99% of all Data,hacks, are USER ERROR.
+Bawal: xUSB, XControlPanel, xCMD, xAPPS, ncpa.cpl NetworkSettings.
+
+GROUP POLICY MANAGEMENT
+Default domain policy
+
+Lab 1: create a nas server/ file server
+
+DAS: Directly attached storage
+NAS: 139/445 (Shared)
+SAN: 3260 (iSCSi)
+
+RAID: redundant array independent disk
+
+IAM: 
+IPV4 > azureM.com
+server manager > Roles > ADDS > Promote > azure32.com > install
+
+TASK 5: AAA Authorization, Authentication, Accounting using 
+      Azure IAM, "Radius", "AAA", "NPS"
+shell:priv-lvl=15
+
+TASK 6: Advance AAA/Radius Config for Cisco:
+config t
+aaa New-model
+radius-server host 10.32.1.8 key keykeymo
+ip radius source-interface vlan 1
+aaa authorization exec default group radius
+aaa authentication login default group radius local
+line vty 0 14
+  login authentication default
+end
+sh ip radius stat
+
+https://en.wikipedia.org/wiki/IEEE_802.1X
+Network Policy and Access Services
+keykeymo
+
+TASK 7: 
+RA 10173 - Data Privacy Act of 2012
+  Covers: Personal Data, Sensitive personal information, Privileged information
+RA 10175 - Cybercrime Prevention act of 2012
+  Illegal access
+  Data interference
+  System interference
+  Cyber fraud & identity theft
+  Cyber libel
+RA 8792 - E-Commerce Act of 2000
+  E-signatures
+  Electronix contracts
+
+Task 8: RISK MANAGEMENT
+itil@rivanschool.com
+C1sc0123
+
+if it's not documented, it never happened
+
+
+
+-------------------------------------------------------------------------
+NAS, SAN, DAS -> Simple, Span, Striped,Raid 0 (Mirrored), Raid-5 -> Backup -> Recover
+Active Directory Domain Services, Active Directory Certificate Authority, Group Policy Management, Active Directory Users and Computers
+802.1x (Radius, Wireshark)
+
+Simple (Do not care)
+Span (Network Cache)
+Striped (iSCSi Virtual Disk)
+Raid 0 Drive C & Root Directory (Protect OS)
+Raid-5 (SQL Database)
+
+-------------------------------------------------------------------------
+Ports:
+80: http
+135: msrpc
+139, 445: NAS (Shared)
+2049: NFS
+3260: SAN (iSCSi)
